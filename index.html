@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HotpotBud - Personalized Hotpot Recipes</title>
+  <link rel="stylesheet" href="static/style.css">
+</head>
+<body class="bg-neutral-950 text-white">
+  <div id="app">
+    <header class="bg-gradient-to-b from-slate-900 to-slate-950 py-4 px-6 shadow-md">
+      <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">
+          HotpotBud
+        </h1>
+        <nav>
+          <a href="https://github.com" target="_blank" class="text-gray-300 hover:text-white ml-4">About</a>
+        </nav>
+      </div>
+    </header>
+    
+    <main class="container mx-auto px-4 py-8">
+      <section class="text-center py-12 max-w-4xl mx-auto">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-600 text-transparent bg-clip-text">
+          Generate Your Perfect Hotpot Sauce
+        </h1>
+        <p class="text-xl text-gray-300 mb-8">Based on your music taste</p>
+        
+        <div id="login-container" class="flex justify-center">
+          <button id="spotify-login-btn" class="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 flex items-center shadow-lg hover:shadow-xl">
+            <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.52 17.34c-.24.36-.66.48-1.02.24-2.82-1.74-6.36-2.1-10.56-1.14-.42.12-.78-.18-.9-.54-.12-.42.18-.78.54-.9 4.56-1.02 8.52-.6 11.64 1.32.42.18.48.66.3 1.02zm1.44-3.3c-.3.42-.84.6-1.26.3-3.24-1.98-8.16-2.58-11.94-1.42-.48.12-.99-.18-1.11-.66-.12-.48.18-.99.66-1.11 4.38-1.32 9.78-.66 13.5 1.62.36.24.54.78.24 1.26l-.09.01zm.12-3.36c-3.84-2.28-10.2-2.5-13.86-1.38-.6.12-1.2-.24-1.32-.84-.12-.6.24-1.2.84-1.32 4.26-1.26 11.28-1.02 15.72 1.62.54.3.72 1.02.42 1.56-.3.42-1.02.66-1.56.36h-.24z"/>
+            </svg>
+            Connect with Spotify
+          </button>
+        </div>
+        
+        <div id="loading-container" class="hidden">
+          <div class="spinner border-4 border-blue-600 border-t-transparent w-12 h-12 rounded-full mx-auto animate-spin mb-4"></div>
+          <p class="text-gray-300">Analyzing your music taste...</p>
+        </div>
+        
+        <div id="result-container" class="hidden mt-8">
+          <div class="bg-slate-800 rounded-lg p-6 shadow-xl">
+            <h2 id="recipe-name" class="text-3xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">Spicy Fusion Hotpot Sauce</h2>
+            <p id="recipe-description" class="text-gray-300 mb-6">A bold and energetic sauce with hints of sweetness, perfect for those who enjoy vibrant dance music and electronic beats.</p>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 class="text-xl font-semibold mb-4 text-blue-400">Flavor Profile</h3>
+                <ul class="text-left space-y-2">
+                  <li id="top-genre" class="flex items-center"><span class="w-28 text-gray-400">Top Genre:</span> <span>Electronic</span></li>
+                  <li id="energy-level" class="flex items-center"><span class="w-28 text-gray-400">Energy:</span> <span>High</span></li>
+                  <li id="mood" class="flex items-center"><span class="w-28 text-gray-400">Mood:</span> <span>Upbeat</span></li>
+                </ul>
+                
+                <h3 class="text-xl font-semibold mt-6 mb-4 text-blue-400">Ingredients</h3>
+                <ul id="ingredients-list" class="text-left space-y-2">
+                  <li>3 tbsp Soy sauce</li>
+                  <li>2 tbsp Chili oil</li>
+                  <li>1 tbsp Sesame oil</li>
+                  <li>2 cloves Garlic, minced</li>
+                  <li>1 tbsp Honey</li>
+                  <li>1 tsp Sichuan peppercorns</li>
+                  <li>1 stalk Green onion, chopped</li>
+                </ul>
+              </div>
+              
+              <div>
+                <h3 class="text-xl font-semibold mb-4 text-blue-400">Instructions</h3>
+                <ol id="instructions-list" class="text-left space-y-3 list-decimal list-inside">
+                  <li>Mix soy sauce, chili oil, and sesame oil in a small bowl.</li>
+                  <li>Add minced garlic and honey, stir until combined.</li>
+                  <li>Crush Sichuan peppercorns and add to the mixture.</li>
+                  <li>Sprinkle chopped green onions as garnish.</li>
+                  <li>Let the flavors meld for 5 minutes before using.</li>
+                </ol>
+                
+                <h3 class="text-xl font-semibold mt-6 mb-4 text-blue-400">Inspired by</h3>
+                <ul id="tracks-list" class="text-left space-y-2">
+                  <li>"Electric Feel" by MGMT</li>
+                  <li>"Dance Monkey" by Tones and I</li>
+                  <li>"Blinding Lights" by The Weeknd</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="mt-8 flex flex-wrap justify-center gap-4">
+              <button id="save-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md transition-colors">
+                Save Recipe
+              </button>
+              <button id="share-btn" class="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-md transition-colors">
+                Share Recipe
+              </button>
+              <button id="new-recipe-btn" class="bg-gray-700 hover:bg-gray-800 text-white font-semibold py-2 px-4 rounded-md transition-colors">
+                Generate New
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    
+    <footer class="bg-slate-900 py-6 mt-12">
+      <div class="container mx-auto px-4 text-center text-gray-400">
+        <p>© 2025 HotpotBud. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+  
+  <script src="static/app.js"></script>
+</body>
+</html>
